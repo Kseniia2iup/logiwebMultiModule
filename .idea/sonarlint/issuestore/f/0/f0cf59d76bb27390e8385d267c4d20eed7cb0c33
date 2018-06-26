@@ -1,0 +1,6 @@
+
+{%squid:RedundantThrowsDeclarationCheck"GRemove the redundant '!unknownSymbol!' thrown exception declaration(s).(¨ê“Œûÿÿÿÿ
+{%squid:RedundantThrowsDeclarationCheck"GRemove the redundant '!unknownSymbol!' thrown exception declaration(s).(¨ê“Œûÿÿÿÿ
+Vsquid:S1075"ARefactor your code to get this URI from a customizable parameter.(º”¤‚
+[squid:S1192"FDefine a constant instead of duplicating this literal "order" 9 times.(˜Ð™¬
+msquid:S1192"SDefine a constant instead of duplicating this literal "redirect:/manager/" 4 times.(Ñ—«çþÿÿÿÿ

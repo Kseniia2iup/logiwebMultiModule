@@ -1,0 +1,7 @@
+
+hsquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(ò“ñ¢
+^squid:S2147"DCombine this catch with the one at line 67, which has the same body.(†ëˆçùÿÿÿÿ
+^squid:S2147"DCombine this catch with the one at line 80, which has the same body.(†ëˆçùÿÿÿÿ
+Csquid:S1948")Make "factory" transient or serializable.(Ğ‡éüÿÿÿÿ
+Asquid:S1948",Make "connection" transient or serializable.(ÿ›ÅÒ
+>squid:S1948")Make "channel" transient or serializable.(¸‰ò
