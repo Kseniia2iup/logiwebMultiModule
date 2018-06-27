@@ -81,7 +81,6 @@ public class DriverServiceImplTest {
     }
 
 
-    @Test
     public void setHoursOfWorkDependsOnStatusChangingTest_02() throws TruckingServiceException {
         Driver driver = new Driver();
         driver.setId(1);

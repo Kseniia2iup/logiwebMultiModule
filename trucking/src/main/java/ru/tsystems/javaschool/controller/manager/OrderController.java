@@ -260,7 +260,7 @@ public class OrderController {
         return ORDER_LIST_VIEW_PATH;
     }
 
-    //@ModelAttribute("user")
+    @ModelAttribute("user_")
     private String getPrincipal(){
         String userName = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.tsystems.javaschool.exceptions.TruckingServiceException;
 import ru.tsystems.javaschool.dto.User;
 import ru.tsystems.javaschool.repository.UserDao;
+import ru.tsystems.javaschool.service.DriverService;
 import ru.tsystems.javaschool.service.UserService;
 
 import java.util.List;
@@ -25,6 +26,13 @@ public class UserServiceImpl implements UserService {
 
     private PasswordEncoder passwordEncoder;
 
+    private DriverService driverService;
+
+    @Autowired
+    public void setDriverService(DriverService driverService) {
+        this.driverService = driverService;
+    }
+
     @Autowired
     public void setDao(UserDao dao) {
         this.dao = dao;
@@ -37,6 +45,7 @@ public class UserServiceImpl implements UserService {
 
     public void save(User user) throws TruckingServiceException {
         try {
+            driverService.sendSuccessRegistrationEmail(user.getEmail(), user.getLogin(), user.getPassword());
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             dao.save(user);
         }

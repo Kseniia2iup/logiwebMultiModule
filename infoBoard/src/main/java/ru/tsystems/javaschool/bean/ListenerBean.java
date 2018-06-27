@@ -3,12 +3,12 @@ package ru.tsystems.javaschool.bean;
 import com.rabbitmq.client.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.tsystems.javaschool.socket.InfoBoardSessionHandler;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.io.Serializable;
@@ -22,10 +22,13 @@ public class ListenerBean implements Serializable {
     private static final Logger LOGGER = LoggerFactory.getLogger(ListenerBean.class);
 
     @Inject
+    private InfoBoardSessionHandler sessionHandler;
+    /*
+    @Inject
     private UpdateDataBean updateDataBean;
 
     @Inject
-    private BeanManager beanManager;
+    private BeanManager beanManager;*/
 
     private final static String QUEUE_NAME = "infoBoardQueue";
     private ConnectionFactory factory = new ConnectionFactory();
@@ -35,7 +38,7 @@ public class ListenerBean implements Serializable {
     @PostConstruct
     public void updateAfterDeploy(){
         LOGGER.info("From ListenerBean method init: Calling updateDataBean after deploy");
-        updateDataBean.observeUpdateActivity("update");
+        /*updateDataBean.observeUpdateActivity("update");*/
         init();
     }
 
@@ -55,8 +58,7 @@ public class ListenerBean implements Serializable {
                     try {
                         String message = new String(body, "UTF-8");
                         LOGGER.info("ListenerBean got message from TruckingWebApp: {}", message);
-                        Thread.sleep(2000);
-                        beanManager.fireEvent(message);
+                        sessionHandler.notifySessions();
 
                     } catch (Exception e) {
                         LOGGER.error("From ListenerBean method handleDelivery: something went wrong\n",e);

@@ -34,7 +34,7 @@
                 </div>
                     <div class="meta">
                         <time class="published" datetime="">${date}</time>
-                        <a href="<c:url value="/manager/listOrders"/>" class="author"><span class="name">${user}</span></a>
+                        <a href="<c:url value="/manager/listOrders"/>" class="author"><span class="name">${user_}</span></a>
                     </div>
             </header>
             <table class="table table-hover">

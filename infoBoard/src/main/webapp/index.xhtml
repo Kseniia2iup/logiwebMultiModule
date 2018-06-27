@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:o="http://omnifaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
 
 <h:head>
     <title>LogiWeb Information Board</title>
@@ -17,92 +17,45 @@
                 <div id="cool-big-title">
                     <div class="title">
                         <h2>LogiWeb Information Board</h2>
+                        <p id="test-text">Text!!!</p>
+                        <div id="test-json"></div>
                     </div>
                 </div>
                 <!-- Post -->
                 <div class="post">
+                    <h2>Drivers And Trucks Info</h2>
+        <table id="info_">
+            <thead>
+            <tr>
+                <th>ALL DRIVERS</th>
+                <th>DRIVERS BUSY</th>
+                <th>FREE DRIVERS</th>
+                <th>ALL TRUCKS</th>
+                <th>TRUCKS BUSY</th>
+                <th>TRUCKS AVAILABLE</th>
+                <th>TRUCKS BROKEN</th>
+            </tr>
+            </thead>
+            <tbody id="resultTable"></tbody>
+        </table>
+
         <h2>Last Orders Info</h2>
-        <h:dataTable id="ordersInfo" value="#{infoBoardDataBean.getInformation().lastTenOrders}" var="order">
-            <h:column>
-                <f:facet name="header">ID</f:facet>
-                #{order.id}
-            </h:column>
-            <h:column>
-                <f:facet name="header">STATUS</f:facet>
-                #{order.orderStatus}
-            </h:column>
-            <h:column>
-                <f:facet name="header">CARGOES</f:facet>
-                #{order.cargoes}
-            </h:column>
-            <h:column>
-                <f:facet name="header">TRUCK</f:facet>
-                #{order.truck}
-            </h:column>
-            <h:column>
-                <f:facet name="header">DRIVERS</f:facet>
-                #{order.drivers}
-            </h:column>
-        </h:dataTable>
-        <h:form>
-            <f:websocket channel="push">
-                <f:ajax event="update" render=":ordersInfo"/>
-            </f:websocket>
-        </h:form>
-
-        <h2>Drivers Info</h2>
-        <h:dataTable id="driversInfo" value="#{infoBoardDataBean.getInformation()}" var="info">
-            <h:column>
-                <f:facet name="header">ALL DRIVERS</f:facet>
-                #{info.allDrivers}
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">DRIVERS BUSY</f:facet>
-                #{info.driversOnOrder}
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">FREE DRIVERS</f:facet>
-                #{info.freeDrivers}
-            </h:column>
-        </h:dataTable>
-        <h:form>
-            <f:websocket channel="push">
-                <f:ajax event="update" render=":driversInfo"/>
-            </f:websocket>
-        </h:form>
-
-        <h2>Trucks Info</h2>
-        <h:dataTable id="trucksInfo" value="#{infoBoardDataBean.getInformation()}" var="info">
-            <h:column>
-                <f:facet name="header">ALL TRUCKS</f:facet>
-                #{info.allTrucks}
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">TRUCKS BUSY</f:facet>
-                #{info.trucksOnOrder}
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">TRUCKS AVAILABLE</f:facet>
-                #{info.availableTrucks}
-            </h:column>
-
-            <h:column>
-                <f:facet name="header">TRUCKS BROKEN</f:facet>
-                #{info.brokenTrucks}
-            </h:column>
-        </h:dataTable>
-        <h:form>
-            <f:websocket channel="push">
-                <f:ajax event="update" render=":trucksInfo"/>
-            </f:websocket>
-        </h:form>
+                    <table id="orsersInfo_">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>STATUS</th>
+                            <th>CARGOES</th>
+                            <th>TRUCK</th>
+                            <th>DRIVERS</th>
+                        </tr>
+                        </thead>
+                        <tbody id="resultOrderTable"></tbody>
+                    </table>
                 </div>
             </div>
     </div>
     <h:outputScript library="js" name="jquery.min.js"/>
+    <h:outputScript library="js" name="websocket.js"/>
 </h:body>
 </html>

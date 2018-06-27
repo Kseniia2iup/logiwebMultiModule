@@ -24,7 +24,7 @@ public class InfoBoardController {
     @GetMapping(value = "/emit")
     public @ResponseBody
     InfoDto infoBoardQueue() throws TruckingServiceException {
-        LOGGER.info("Emit to infoBoardQueue");
+        LOGGER.info("Emit to infoBoard");
         return infoBoardService.getJSONInfoForUpdate();
     }
 }
